@@ -3,7 +3,6 @@ import CountryPage from './CountryPage';
 import {
   setSearchIsDisabled,
 } from '../../../redux/actionCreators/exampleActionCreator';
-// import { ICountries } from '../../../Interfaces';
 import { fetchDetails, fetchDetailsWithoutState } from '../../../redux/actions/stateAction';
 import { fetchDeleteDetails } from '../../../redux/actionCreators/fetchData';
 

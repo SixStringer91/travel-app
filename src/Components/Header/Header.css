@@ -6,8 +6,6 @@ display: block;
 .header {
   background: linear-gradient(90deg, rgba(114,109,177,1) 0%, rgba(50,149,113,1) 36%, rgba(102,184,162,1) 73%, rgba(0,212,255,1) 100%);
   padding: 1rem 5rem 1rem 2rem;
-  position: fixed;
-  top: 0;
   z-index: 1001;
   width: 100%;
 }

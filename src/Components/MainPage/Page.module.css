@@ -1,11 +1,26 @@
 .mainPage {
-  height: 100%;
-  margin-top:70px;
-  margin-bottom: 70px;
+  height: calc(100vh - 128px);
+	overflow-y:scroll;
+	overflow-x:hidden;
+	padding: 20px
 }
 
-@media(max-width:576px){
-  .mainPage {
-    margin-top:100px;  
-  }
+.mainPage::-webkit-scrollbar {
+	width: 5px;
+	height: 10px;
+}
+
+.mainPage::-webkit-scrollbar-thumb {
+	border-radius: 10px;
+	background: rgba(0,212,255,1);
+	border: 0px solid rgba(0, 0, 0, 0);
+	background-clip: padding-box;
+}
+
+.mainPage::-webkit-scrollbar-track {
+	background: transparent;
+}
+
+.mainPage::-webkit-scrollbar-button {
+	display: none;
 }

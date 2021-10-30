@@ -1,6 +1,6 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import { Card, Col, Row } from 'antd';
+import { Card, Col, Row, Image} from 'antd';
 import Preloader from '../Preloader/Preloader';
 
 
@@ -45,10 +45,18 @@ const CountriesList = ({
 						hoverable
 						style={{ width: '200px' }}
 						cover={
-							<img style={{ width: '200px', height: '200px', objectFit: 'cover' }}
-								alt="example"
-								src={el.photo}
-							/>
+							<Image
+							style={{objectFit: 'cover' }}
+							width={200}
+							height={200}
+							preview={false}
+							src={el.photo}
+							placeholder={
+							<div style={{height: '100%', backgroundColor: 'white', display: 'flex', justifyContent: 'center', alignItems: 'center'}} >
+								<Preloader/>
+								</div>
+							}
+						/>
 						}
 					>
 						<Meta style={{ textAlign: 'center' }}

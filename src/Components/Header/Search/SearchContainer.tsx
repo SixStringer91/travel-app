@@ -2,11 +2,10 @@ import { connect } from 'react-redux';
 import Search from './Search';
 import { setSearch } from '../../../redux/actionCreators/exampleActionCreator';
 
-const placeholder:any = {
-
-  'ru' : 'набирайте, сударь',
-  'en' : 'type, sir',
-  'be' :  'набірайце, cпадарства'
+const placeholder:{[key:string]:string} = {
+  ru : 'набирайте, сударь',
+  en : 'type, sir',
+  be :  'набірайце, cпадарства'
 };
 
 const MapStateToProps = ({
