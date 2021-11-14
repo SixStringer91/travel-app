@@ -4,42 +4,36 @@ import {
   SET_COUNTRY,
   SET_LANGUAGE,
   SET_SEARCH,
-  SET_SEARCH_IS_DISABLED,
+  SET_SEARCH_IS_DISABLED
 } from '../actions/actionTypes';
 
 export function add() {
   return {
-    type: ADD,
+    type: ADD
   };
 }
 
-export const setCountries = function (countries: any[]) {
-  return {
-    type: SET_COUNTRIES,
-    countries,
-  };
-};
+export const setCountries = (countries: any[]) => ({
+  type: SET_COUNTRIES,
+  countries
+});
 
-export const setCountry = function (country: string) {
-  return {
-    type: SET_COUNTRY,
-    country,
-  };
-};
+export const setCountry = (country: string) => ({
+  type: SET_COUNTRY,
+  country
+});
 
-export const setLanguage = (lang: string) => {
-  return {
-    type: SET_LANGUAGE,
-    lang,
-  };
-};
+export const setLanguage = (lang: string) => ({
+  type: SET_LANGUAGE,
+  lang
+});
 
 export const setSearch = (inputText: string) => ({
   type: SET_SEARCH,
-  inputText,
+  inputText
 });
 
 export const setSearchIsDisabled = (value: any) => ({
   type: SET_SEARCH_IS_DISABLED,
-  value,
+  value
 });

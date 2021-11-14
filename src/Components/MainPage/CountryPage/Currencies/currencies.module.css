@@ -1,0 +1,21 @@
+.currencyBlock {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction:  column;
+	margin: 0 auto;
+}
+
+.currencyValue {
+	min-width: 100px;
+}
+
+@media (max-width:1317px ) {
+	.currencyBlock{
+		flex-direction: row;
+	}
+	
+	.currencyValue {
+		min-width: 50px;
+	}
+}

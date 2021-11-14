@@ -8,9 +8,9 @@ type SearchActionType = {
 };
 
 const initialState = {
-  text:'',
+  text: '',
   disabled: false
-  };
+};
 
 const searchReducer = (state = initialState, action: SearchActionType) => {
   const stateCopy: ISearchInput = { ...state };

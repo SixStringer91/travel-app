@@ -83,7 +83,7 @@ min-width: 285px;
 }
 
 
-@media(max-width:1250px){
+@media(max-width:1317px){
   .upperContent{
     flex-direction: column;
   }
@@ -97,7 +97,8 @@ min-width: 285px;
   .leftBlock{
     order: 3;
     margin: 0 auto;
-    margin-top:30px
+    margin-top:30px;
+    width: 80%
     }
   .bottomBlock{
      flex-direction: column;

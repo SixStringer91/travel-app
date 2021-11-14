@@ -1,5 +1,3 @@
-import React from 'react';
-
 const PandaSvg = () => (
   <svg viewBox="0 0 1024 1024" width="20px" height="20px" fill="currentColor">
     <path

@@ -1,25 +1,24 @@
-import React from 'react';
 import { connect } from 'react-redux';
 import CountriesList from './CountriesList';
 import {
-  setSearchIsDisabled,
+  setSearchIsDisabled
 } from '../../../redux/actionCreators/exampleActionCreator';
-import { fetchCountries } from "../../../redux/actions/stateAction";
+import { fetchCountries } from '../../../redux/actions/stateAction';
 
-const countryFilter = function (searchInputTxt: string,
-                                countries: any,
-                                lang: string) {
-let countriesCopy;
+const countryFilter = (
+  searchInputTxt: string,
+  countries: any
+) => {
+  let countriesCopy;
   if (!searchInputTxt) {
     countriesCopy = [...countries];
-  }
-  else {
-   countriesCopy = countries.filter((country: any) => {
+  } else {
+    countriesCopy = countries.filter((country: any) => {
       if (
         country.name.toLowerCase()
-          .search(searchInputTxt.toLowerCase()) !== -1 ||
+          .search(searchInputTxt.toLowerCase()) !== -1
 
-        country.capital.toLowerCase()
+        || country.capital.toLowerCase()
           .search(searchInputTxt.toLowerCase()) !== -1
       ) {
         return country;
@@ -49,34 +48,33 @@ const excretion = (name: string, inputText: string) => {
   );
 };
 
-const MapStateToProps = ({ langReducer,
-                           searchReducer:{ text },
-                           countryReducer:{ loading,
-                             error, countries } }:any) => {
-  const countriesArray = countries.map((el:any)=>{
-    return {
-      name: el[`name${langReducer.toUpperCase()}`],
-      capital : el.capital[langReducer],
-      photo : el.photo,
-      nameEN : el.nameEN
-    };
-  });
+const MapStateToProps = ({
+  langReducer,
+  searchReducer: { text },
+  countryReducer: {
+    loading,
+    error, countries
+  }
+}:any) => {
+  const countriesArray = countries.map((el:any) => ({
+    name: el[`name${langReducer.toUpperCase()}`],
+    capital: el.capital[langReducer],
+    photo: el.photo,
+    nameEN: el.nameEN
+  }));
   return {
-    countriesList: countryFilter(text, countriesArray,langReducer),
+    countriesList: countryFilter(text, countriesArray),
     loading,
     error,
-    text,
+    text
   };
 };
 
-const MapDispatchToProps = (dispatch: any) => {
-  return {
-    getCountries: () => {dispatch(fetchCountries());},
-    setSearchIsDisabled: () => dispatch(setSearchIsDisabled(false)),
-    setExcretion: (name: string, inputText: string) =>
-      excretion(name, inputText),
-  };
-};
+const MapDispatchToProps = (dispatch: any) => ({
+  getCountries: () => { dispatch(fetchCountries()); },
+  setSearchIsDisabled: () => dispatch(setSearchIsDisabled(false)),
+  setExcretion: (name: string, inputText: string) => excretion(name, inputText)
+});
 
 const CountryListContainer = connect(
   MapStateToProps,

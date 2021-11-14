@@ -1,11 +1,11 @@
-import React, { useState, useCallback } from 'react';
+import { useState, useCallback } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Button } from 'antd';
 import ModalForm from './ModalForm/ModalForm';
 import {
   registration,
   login,
-  logout,
+  logout
 } from '../../../redux/actions/userActions';
 
 const Profile = () => {

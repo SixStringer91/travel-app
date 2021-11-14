@@ -1,7 +1,7 @@
 import {
   SET_COUNTRY,
   FETCH_DETAILS_SUCCESS,
-  FETCH_DELETE_DETAILS,
+  FETCH_DELETE_DETAILS
 } from '../actions/actionTypes';
 
 const initialState = {
@@ -15,17 +15,17 @@ const initialState = {
         {
           imgURL: '',
           viewName: '',
-          about: '',
-        },
+          about: ''
+        }
       ],
       videoURL: '',
       mapCoords: {
         center: {},
-        capital: {},
-      },
+        capital: {}
+      }
     },
-    rating: 0,
-  },
+    rating: 0
+  }
 };
 
 const countryPageReducer = (state = initialState, action: any) => {
@@ -35,7 +35,7 @@ const countryPageReducer = (state = initialState, action: any) => {
       return {
         ...initialState,
         loading: false,
-        data: { ...action.payload.details },
+        data: { ...action.payload.details }
       };
     case FETCH_DELETE_DETAILS:
       return { ...initialState, loading: true };

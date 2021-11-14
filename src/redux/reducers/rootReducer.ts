@@ -10,7 +10,7 @@ const reducers = combineReducers({
   langReducer,
   searchReducer,
   countryPageReducer,
-  userReducer,
+  userReducer
 });
 
 export default reducers;

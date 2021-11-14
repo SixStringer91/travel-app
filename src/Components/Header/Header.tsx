@@ -1,70 +1,63 @@
-import React from 'react';
-import { Row, Col } from 'antd';
+import { Row, Col, Drawer } from 'antd';
 import { NavLink } from 'react-router-dom';
-import Icon from '@ant-design/icons';
+import Icon, { SettingFilled } from '@ant-design/icons';
+import { useState } from 'react';
 import PandaSvg from './Panda';
-import LanguageContainer from './Language/LanguageContainer';
-import SearchContainer from './Search/SearchContainer';
-import Profile from './Profile/Profile';
-import 'antd/dist/antd.css';
 import './Header.css';
+import Search from './Search/Search';
+import Language from './Language/Language';
+// import Profile from './Profile/Profile';
 
-const Header = function () {
+const resetMargin = { marginLeft: 0, marginRight: 0 };
+
+const Header = () => {
+  const [isOpen, setOpen] = useState(false);
+
   return (
     <>
-      <Row className="header" wrap justify="center">
-        <Col
-          flex={1}
-          style={{
-            display: 'flex',
-            justifyContent: 'flex-start',
-            alignItems: 'center',
-          }}
-        >
+      <Drawer
+        height={69}
+        visible={isOpen}
+        placement="top"
+        mask={false}
+        className="drawer"
+        onClose={() => setOpen((prev) => !prev)}
+      >
+        <Row className="header" gutter={16} justify="center" align="middle" style={resetMargin}>
+          <Col md={8} xs={14}>
+            <Search />
+          </Col>
+
+          <Col>
+            <Language />
+          </Col>
+        </Row>
+      </Drawer>
+      <Row
+        className="header"
+        style={resetMargin}
+        gutter={16}
+        justify="space-between"
+        align="middle"
+      >
+        <Col style={{ justifyContent: 'flex-start', marginRight: 'auto' }}>
           <NavLink to="/">
-            <div
-              style={{
-                display: 'flex',
-                justifyContent: 'flex-start',
-                alignItems: 'center',
-              }}
-            >
-              <Icon component={PandaSvg} />{' '}
-              <span style={{ paddingLeft: '1rem', fontSize: '1.5rem' }}>
-                Travel App
-              </span>
+            <div>
+              <Icon component={PandaSvg} />
+              <span className="title">Travel App</span>
             </div>
           </NavLink>
         </Col>
 
-        <Col
-          className="ant-col-search"
-          flex={1}
-          style={{ display: 'flex', alignItems: 'center' }}
-        >
-          <SearchContainer />
-        </Col>
-
-        <Col
-          flex={1}
-          style={{
-            display: 'flex',
-            justifyContent: 'flex-end',
-            alignItems: 'center',
-          }}
-        >
-          <LanguageContainer />
-        </Col>
-
-        <Col
-          flex={1}
-          style={{
-            display: 'flex',
-            justifyContent: 'flex-end',
-            alignItems: 'center',
-          }}
-        >
+        {/* <Col>
           <Profile />
+        </Col> */}
+
+        <Col>
+          <SettingFilled
+            onClick={() => setOpen((prev) => !prev)}
+            style={{ fontSize: '200%', color: 'white' }}
+          />
         </Col>
       </Row>
     </>

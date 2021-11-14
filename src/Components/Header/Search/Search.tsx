@@ -1,21 +1,41 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { Input } from 'antd';
 import { CompassOutlined } from '@ant-design/icons';
+import { connect } from 'react-redux';
+import { setSearch } from '../../../redux/actionCreators/exampleActionCreator';
 
-const Search: React.FC = ({ text, disabled, setInputText, placeholder }: any)=>{
-  const searchRef: any = React.createRef();
-  const onSearchEnter = () => setInputText(searchRef.current.props.value);
+type SearchProps = {
+	text: string,
+	disabled: boolean,
+	placeholder:string,
+	setInputText(inputText: string): {
+    type: string;
+    inputText: string;
+}
+}
 
-  useEffect(() => {
-    searchRef.current.focus({
-      cursor: 'end',
+const placeholderText:{[key:string]:string} = {
+  ru: 'набирайте, сударь',
+  en: 'type, sir',
+  be: 'набірайце, cпадарства'
+};
+
+const SearchUI = ({
+  text, disabled, setInputText, placeholder
+}: SearchProps) => {
+  const searchRef = React.useRef<Input>(null);
+  const onSearchEnter = () => setInputText(searchRef.current?.props.value as string);
+
+  React.useEffect(() => {
+    searchRef.current?.focus({
+      cursor: 'end'
     });
   });
 
   return (
     <>
       <Input.Search
-        size = 'middle'
+        size="middle"
         disabled={disabled}
         ref={searchRef}
         allowClear
@@ -29,5 +49,22 @@ const Search: React.FC = ({ text, disabled, setInputText, placeholder }: any)=>{
     </>
   );
 };
+
+const MapState = ({
+  searchReducer: { text, disabled },
+  langReducer: lang
+}: any) => (
+  {
+    placeholder: placeholderText[lang],
+    text,
+    disabled
+  }
+);
+
+const MapDispatch = (dispatch: any) => ({
+  setInputText: (inputText: string) => dispatch(setSearch(inputText))
+});
+
+const Search = connect(MapState, MapDispatch)(SearchUI);
 
 export default Search;

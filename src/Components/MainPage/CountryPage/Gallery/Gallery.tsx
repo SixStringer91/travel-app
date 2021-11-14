@@ -5,8 +5,7 @@ import './Gallery.css';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 
-function Gallery(props: any) {
-
+const Gallery = (props: any) => {
   const [nav1, setNav1] = useState<any>(null);
   const [nav2, setNav2] = useState<any>(null);
   const [slider1, setSlider1] = useState<any>(null);
@@ -33,21 +32,21 @@ function Gallery(props: any) {
         breakpoint: 700,
         settings: {
           arrows: false
-        },
+        }
       },
       {
         breakpoint: 500,
         settings: {
           arrows: false
-        },
+        }
       },
       {
         breakpoint: 400,
         settings: {
           arrows: false
-        },
-      },
-    ],
+        }
+      }
+    ]
 
   };
 
@@ -60,8 +59,8 @@ function Gallery(props: any) {
     centerMode: true,
     swipeToSlide: true,
     focusOnSelect: true,
-    centerPadding: '10px',
-    
+    centerPadding: '10px'
+
   };
   const { views, lang } = props;
   return (
@@ -71,19 +70,17 @@ function Gallery(props: any) {
         asNavFor={nav2}
         ref={(slider: any) => setSlider1(slider)}
       >
-        {views.map((v: any, i: number) => {
-          return (
-            <div className="slick-slide " key={v.viewName[lang]}>
-              <h2 className="slick-slide-title">{v.viewName[lang]}</h2>
-              <img
-                className="slick-slide-image bigImage"
-                src={`${v.imgURL}`}
-                alt={`${v.viewName[lang]}`}
-              />
-              <div className="slick-slide-label"><span>{v.about[lang]}</span></div>
-            </div>
-          );
-        })}
+        {views.map((v: any) => (
+          <div className="slick-slide " key={v.viewName[lang]}>
+            <h2 className="slick-slide-title">{v.viewName[lang]}</h2>
+            <img
+              className="slick-slide-image bigImage"
+              src={`${v.imgURL}`}
+              alt={`${v.viewName[lang]}`}
+            />
+            <div className="slick-slide-label"><span>{v.about[lang]}</span></div>
+          </div>
+        ))}
       </Slider>
       <div className="thumbnail-slider-wrap">
         <Slider
@@ -91,7 +88,7 @@ function Gallery(props: any) {
           asNavFor={nav1}
           ref={(slider: any) => setSlider2(slider)}
         >
-          {views.map((v: any, i: number) => (
+          {views.map((v: any) => (
             <div className="slick-slide" key={v.viewName[lang]}>
               <img
                 className="slick-slide-image"
@@ -104,6 +101,6 @@ function Gallery(props: any) {
       </div>
     </div>
   );
-}
+};
 
 export default Gallery;

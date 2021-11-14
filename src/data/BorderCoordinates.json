@@ -1,5 +1,5 @@
 {
-  "Brazil": [
+  "Brazil": 
     {
       "type": "Feature",
       "properties": { "ADMIN": "Brazil", "ISO_A3": "BRA" },
@@ -11304,9 +11304,8 @@
           ]
         ]
       }
-    }
-  ],
-  "Germany": [
+    },
+  "Germany": 
     {
       "type": "Feature",
       "properties": { "ADMIN": "Germany", "ISO_A3": "DEU" },
@@ -14434,10 +14433,8 @@
           ]
         ]
       }
-    }
-  ],
-  "Fiji": [
-    {
+    },
+  "Fiji":{
       "type": "Feature",
       "properties": { "ADMIN": "Fiji", "ISO_A3": "FJI" },
       "geometry": {
@@ -16108,10 +16105,8 @@
           ]
         ]
       }
-    }
-  ],
-  "India": [
-    {
+    },
+  "India": {
       "type": "Feature",
       "properties": { "ADMIN": "India", "ISO_A3": "IND" },
       "geometry": {
@@ -24055,10 +24050,9 @@
           ]
         ]
       }
-    }
-  ],
+    },
 
-  "Mexico": [
+  "Mexico":
     {
       "type": "Feature",
       "properties": { "ADMIN": "Mexico", "ISO_A3": "MEX" },
@@ -31694,10 +31688,8 @@
           ]
         ]
       }
-    }
-  ],
-  "Nigeria": [
-    {
+    },
+  "Nigeria": {
       "type": "Feature",
       "properties": { "ADMIN": "Nigeria", "ISO_A3": "NGA" },
       "geometry": {
@@ -33491,10 +33483,8 @@
           ]
         ]
       }
-    }
-  ],
-  "North-Korea": [
-    {
+    },
+  "North-Korea": {
       "type": "Feature",
       "properties": { "ADMIN": "North Korea", "ISO_A3": "PRK" },
       "geometry": {
@@ -35327,10 +35317,8 @@
           ]
         ]
       }
-    }
-  ],
-  "Norway": [
-    {
+    },
+  "Norway": {
       "type": "Feature",
       "properties": { "ADMIN": "Norway", "ISO_A3": "NOR" },
       "geometry": {
@@ -51639,6 +51627,5 @@
           ]
         ]
       }
-    }
-  ]
+	}
 }

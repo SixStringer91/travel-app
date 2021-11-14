@@ -1,6 +1,6 @@
 import {
   fetchDetailsSuccess,
-  fetchStateSuccess,
+  fetchStateSuccess
 } from '../actionCreators/fetchData';
 
 const baseURL = 'https://damp-thicket-85004.herokuapp.com/';
@@ -8,6 +8,13 @@ const baseURL = 'https://damp-thicket-85004.herokuapp.com/';
 const countriesURL = 'api/get/countries';
 
 const countryInfoURL = 'api/get/countryInfo';
+
+function handleErrors(response: any) {
+  if (!response.ok) {
+    throw Error(response.statusText);
+  }
+  return response;
+}
 
 export function fetchCountries() {
   return async (dispatch: any) => {
@@ -38,11 +45,4 @@ export function fetchDetailsWithoutState(link: string) {
     const details = await respDetails.json();
     dispatch(fetchDetailsSuccess(details));
   };
-}
-
-function handleErrors(response: any) {
-  if (!response.ok) {
-    throw Error(response.statusText);
-  }
-  return response;
 }

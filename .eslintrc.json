@@ -1,0 +1,68 @@
+{
+    "env": {
+			"browser": true,
+			"es2021": true,
+			"node": true     
+    },
+    "extends": [
+        "plugin:react/recommended",
+        "airbnb"
+    ],
+    "parser": "@typescript-eslint/parser",
+    "parserOptions": {
+        "ecmaFeatures": {
+            "jsx": true
+        },
+        "ecmaVersion": 12,
+        "sourceType": "module"
+    },
+    "plugins": [
+			"import",
+        "react",
+        "@typescript-eslint"
+    ],
+		"settings": {
+			"react": { "version": "detect" },
+			"typescript": {
+				"paths": "./tsconfig.json"
+			},
+			"import/resolver": {
+					"node": {
+							"extensions": [".js", ".jsx", ".ts", ".tsx", "ts"],
+							"moduleDirectory": ["node_modules", "src/"]
+					}
+			}
+	},
+    "rules": {
+			"max-len": [2, 120, 4],
+			"import/prefer-default-export": 0,
+			"no-use-before-define": 0,
+			"@typescript-eslint/no-use-before-define": ["error"],
+			"react/jsx-one-expression-per-line": [1, { "allow": "single-child" }],
+			"camelcase": 0,
+			"react/jsx-props-no-spreading": 0,
+			"no-nested-ternary": 0,
+				"no-mixed-spaces-and-tabs": 0,
+				"no-shadow": 0,
+				"@typescript-eslint/no-shadow": "error",
+				"no-unused-vars": 0,
+				"@typescript-eslint/no-unused-vars": "error",
+			"comma-dangle": ["error", "never"],
+			"no-tabs": ["error", {"allowIndentationTabs": true}],
+			"import/no-extraneous-dependencies": ["error", { "devDependencies": true }],
+				"react/react-in-jsx-scope": 0,
+				"react/jsx-filename-extension": [
+					1, { "extensions": [".js", ".jsx", ".ts", ".tsx"] }
+	],
+	"import/extensions": [
+		"error",
+		"always",
+		{
+				"js": "never",
+				"jsx": "never",
+				"ts": "never",
+				"tsx": "never"
+		}
+	]
+    }
+}

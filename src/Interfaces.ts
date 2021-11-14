@@ -1,3 +1,16 @@
+import { GeoJsonObject } from 'geojson';
+import { CSSProperties } from 'react';
+
+interface GeoJsonObjectEx extends GeoJsonObject{
+	type: string;
+	properties: { ADMIN: string; ISO_A3: string; };
+	geometry: { type: string; coordinates: number[][][][]; };
+}
+
+export type MapDataProp = {
+	[key: string]: GeoJsonObjectEx
+}
+
 export interface IViews {
   imgURL: string;
   viewName: string;
@@ -49,6 +62,8 @@ export interface IMapProps {
   countryName: string;
   countryCapital: string;
   mapCoords: ImapCoords;
+  zoom:number,
+  styles: CSSProperties;
 }
 
 export interface ICurrenciesProps {

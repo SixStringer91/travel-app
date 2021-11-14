@@ -2,8 +2,8 @@ import i18n from 'i18next';
 import { initReactI18next } from 'react-i18next';
 import LanguageDetector from 'i18next-browser-languagedetector';
 import Backend from 'i18next-http-backend';
-import ru from './locales/ru';
-import en from './locales/en';
+import en from './locales/en.data';
+import ru from './locales/ru.data';
 
 i18n
   .use(Backend)
@@ -12,18 +12,18 @@ i18n
   .init({
     resources: {
       en,
-      ru,
+      ru
     },
     fallbackLng: 'ru',
     debug: false,
     ns: ['translations'],
     defaultNS: 'translations',
     interpolation: {
-      escapeValue: false, // not needed for react as it escapes by default
+      escapeValue: false // not needed for react as it escapes by default
     },
     react: {
-      useSuspense: false,
-    },
+      useSuspense: false
+    }
   });
 
 export default i18n;

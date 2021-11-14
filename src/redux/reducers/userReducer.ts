@@ -4,10 +4,10 @@ import { IUser } from '../../Interfaces';
 const initialStateState: IUser = {
   currentUser: {
     username: '',
-    token: '',
+    token: ''
   },
   serverMessage: '',
-  isAuth: false,
+  isAuth: false
 };
 
 export default function userReducer(
@@ -19,14 +19,14 @@ export default function userReducer(
       return {
         ...state,
         currentUser: action.payload,
-        isAuth: true,
+        isAuth: true
       };
 
     case LOGOUT:
       return {
         ...state,
         currentUser: {},
-        isAuth: false,
+        isAuth: false
       };
 
     default:

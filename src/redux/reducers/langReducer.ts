@@ -8,10 +8,10 @@ type LangActionType = {
 const lang = localStorage.getItem('lang') || 'ru';
 
 const langReducer = (state = lang, action: LangActionType) => {
-  let stateCopy: string  = state;
+  let stateCopy: string = state;
   switch (action.type) {
     case SET_LANGUAGE:
-      localStorage.setItem("lang",action.lang);
+      localStorage.setItem('lang', action.lang);
       stateCopy = action.lang;
       return stateCopy;
     default:

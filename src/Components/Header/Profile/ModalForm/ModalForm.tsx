@@ -1,6 +1,8 @@
 import React, { useCallback, useMemo } from 'react';
 import { useSelector } from 'react-redux';
-import { Modal, Form, Input, Button } from 'antd';
+import {
+  Modal, Form, Input, Button
+} from 'antd';
 import { UserOutlined, LockOutlined } from '@ant-design/icons';
 
 interface Values {
@@ -23,14 +25,14 @@ const ModalForm: React.FC<ModalFormProps> = ({
   onCancel,
   onSubmitLogin,
   onSubmitRegistration,
-  selectAuthType,
+  selectAuthType
 }) => {
   const serverMessage = useSelector(
     (state: any) => state.userReducer.serverMessage
   );
 
   const signType = useMemo(() => (isSignIn ? 'Sign In' : 'Sign Up'), [
-    isSignIn,
+    isSignIn
   ]);
 
   const [form] = Form.useForm();
@@ -92,7 +94,7 @@ const ModalForm: React.FC<ModalFormProps> = ({
             rules={[
               {
                 required: true,
-                message: 'Please confirm your password!',
+                message: 'Please confirm your password!'
               },
               ({ getFieldValue }) => ({
                 validator(_, value) {
@@ -104,8 +106,8 @@ const ModalForm: React.FC<ModalFormProps> = ({
                       'The two passwords that you entered do not match!'
                     )
                   );
-                },
-              }),
+                }
+              })
             ]}
           >
             <Input
