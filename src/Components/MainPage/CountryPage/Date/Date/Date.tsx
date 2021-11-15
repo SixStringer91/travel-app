@@ -34,9 +34,9 @@ const Date = (props: IDateProps) => {
     const currentDayOfWeekNumber = dt.getDay() - 1;
 
     setDay(currentDayNumber);
-    if (lang === 'en') setMonth(`of ${months[currentMonthNumber]}`);
+    if (lang === 'en') setMonth(` of ${months[currentMonthNumber]}`);
     else setMonth(` ${months[currentMonthNumber]}`);
-    setWeekDay(weekdays[currentDayOfWeekNumber]);
+    setWeekDay(` ${weekdays[currentDayOfWeekNumber]}`);
   }, [weekdays, months, lang]);
 
   return (

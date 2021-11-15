@@ -2,26 +2,26 @@ import { Card, Row, Statistic } from 'antd';
 import {
   CSSProperties, useCallback, useEffect, useState
 } from 'react';
-import styles from './currencies.module.css';
 
 type CurrencyCardProps = {
 	currency: string,
 	rate: number,
-	suffix: string
+	suffix: string,
+	title: string
 
 }
 
-const valueStyle = {
-  container: (isRowBased:boolean):CSSProperties => ({
-    color: '#3f8600',
-    fontSize: isRowBased ? '15px' : ''
-  })
-};
+const styleSetter = (isSmallDisplay:boolean):CSSProperties => ({
+  color: '#3f8600',
+  fontSize: isSmallDisplay ? '12px' : '',
+  minWidth: isSmallDisplay ? '50px' : '100px'
+});
 
 const CurrencyCard = ({
   currency,
   rate,
-  suffix
+  suffix,
+  title
 }:CurrencyCardProps) => {
   const mediaMatch = window.matchMedia('(max-width: 500px)');
   const [matches, setMatches] = useState(mediaMatch.matches);
@@ -39,11 +39,10 @@ const CurrencyCard = ({
     <Row>
       <Card size="small">
         <Statistic
-          title={`${currency}/EUR`}
-          className={styles.currencyValue}
+          title={`${currency}/${title}`}
           value={rate}
           precision={4}
-          valueStyle={valueStyle.container(matches)}
+          valueStyle={styleSetter(matches)}
           suffix={suffix}
         />
       </Card>

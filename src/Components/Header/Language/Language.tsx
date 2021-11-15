@@ -19,17 +19,22 @@ const langData = [
     value: 'be',
     title: 'Bel'
   }
-
 ];
 
 type LanguageProps = {
   lang: string;
-  setLang: (e: any) => void
+  setLang: (e: any) => void;
 };
 
 const LanguageUI = ({ lang, setLang }: LanguageProps) => {
-  const options = useMemo(() => langData
-    .map(({ value, title }) => <Option key={value} className={css.optionBlock} value={value}>{title}</Option>), []);
+  const options = useMemo(
+    () => langData.map(({ value, title }) => (
+      <Option key={value} className={css.optionBlock} value={value}>
+        {title}
+      </Option>
+    )),
+    []
+  );
 
   return (
     <>

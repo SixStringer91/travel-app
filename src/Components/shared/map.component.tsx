@@ -14,7 +14,7 @@ const LeafletMap = ({
   mapCoords,
   countryName,
   countryCapital,
-  zoom,
+  zoom
 }: IMapProps) => {
   const { center, capital } = mapCoords;
   return (

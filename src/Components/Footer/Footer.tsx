@@ -3,7 +3,10 @@ import styles from './Footer.module.css';
 
 const Footer = () => (
   <div className={styles.footer}>
-    <span>2021</span>
+    <span>
+      2021
+    </span>
+
     {/* <a
       className={styles.footer__authorLink}
       style={{ color: '#241624' }}
@@ -24,14 +27,16 @@ const Footer = () => (
       <GithubOutlined />
       Ilya
     </a> */}
+    {' '}
     <a
       className={styles.footer__authorLink}
-      style={{ color: '#241624' }}
+      style={{ marginLeft: '0.5rem', color: '#241624' }}
       href="https://github.com/SixStringer91"
       target="_blank"
       rel="noreferrer"
     >
       <GithubOutlined />
+      {' '}
       Danik
     </a>
     {/* <a

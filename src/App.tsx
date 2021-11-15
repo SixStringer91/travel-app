@@ -1,4 +1,3 @@
-import { FC } from 'react';
 import { Layout } from 'antd';
 import './App.css';
 import MainPage from './Components/MainPage/MainPage';
@@ -8,7 +7,7 @@ import 'antd/dist/antd.css';
 
 const { Content } = Layout;
 
-const App: FC = () => (
+const App = () => (
   <>
     <Layout style={{ minHeight: '100vh' }}>
       <HeaderInner />
