@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useState } from 'react';
 import { ICurrenciesProps } from '../../../../Interfaces';
+import { CurrencyCard } from '../../../shared';
 import styles from './currencies.module.css';
-import CurrencyCard from './CurrencyCard';
 
 const Currencies = (props: ICurrenciesProps) => {
   const { currency } = props;
@@ -15,20 +15,27 @@ const Currencies = (props: ICurrenciesProps) => {
   const CurrenciesData = [
     {
       rate: currenciesRates.EUR,
-      suffix: '€'
+      suffix: '€',
+      title: 'EUR'
     },
     {
       rate: currenciesRates.USD,
-      suffix: '$'
+      suffix: '$',
+      title: 'USD'
     },
     {
       rate: currenciesRates.BYN,
-      suffix: 'Br'
+      suffix: 'Br',
+      title: 'BYN'
     }
   ];
 
-  const cards = useMemo(() => CurrenciesData
-    .map((card) => <CurrencyCard key={card.suffix} {...card} currency={currency} />), [CurrenciesData]);
+  const cards = useMemo(
+    () => CurrenciesData.map((card) => (
+      <CurrencyCard key={card.suffix} {...card} currency={currency} />
+    )),
+    [CurrenciesData]
+  );
 
   useEffect(() => {
     fetch(
@@ -52,13 +59,7 @@ const Currencies = (props: ICurrenciesProps) => {
       });
   }, []);
 
-  return (
-    <div
-      className={styles.currencyBlock}
-    >
-      {cards}
-    </div>
-  );
+  return <div className={styles.currencyBlock}>{cards}</div>;
 };
 
 export default Currencies;

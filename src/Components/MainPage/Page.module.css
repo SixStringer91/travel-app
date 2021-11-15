@@ -1,5 +1,5 @@
 .mainPage {
-  height: calc(100vh - 128px);
+  height: calc(100vh - 101px);
 	overflow-y:scroll;
 	padding: 20px
 }
@@ -10,7 +10,6 @@
 }
 
 .mainPage::-webkit-scrollbar-thumb {
-	border-radius: 10px;
 	background: rgba(0,212,255,1);
 	border: 0px solid rgba(0, 0, 0, 0);
 	background-clip: padding-box;
