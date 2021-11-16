@@ -1,7 +1,7 @@
-import { SET_USER, LOGOUT } from '../actions/actionTypes';
-import { IUser } from '../../Interfaces';
+import { ReturnedAction } from '../action-creators/action-creators';
+import { ACTIONS } from '../constants';
 
-const initialStateState: IUser = {
+const initialStateState = {
   currentUser: {
     username: '',
     token: ''
@@ -10,19 +10,20 @@ const initialStateState: IUser = {
   isAuth: false
 };
 
-export default function userReducer(
-  state: IUser = initialStateState,
-  action: any
-) {
+const reducer = (
+  state = initialStateState,
+  action: ReturnedAction
+) => {
   switch (action.type) {
-    case SET_USER:
+    case ACTIONS.SET_USER:
       return {
         ...state,
         currentUser: action.payload,
         isAuth: true
       };
 
-    case LOGOUT:
+    case ACTIONS.LOGOUT:
+      localStorage.removeItem('token');
       return {
         ...state,
         currentUser: {},
@@ -32,4 +33,6 @@ export default function userReducer(
     default:
       return state;
   }
-}
+};
+
+export default reducer;

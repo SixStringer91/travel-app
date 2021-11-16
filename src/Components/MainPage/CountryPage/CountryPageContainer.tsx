@@ -1,39 +1,35 @@
 import { connect } from 'react-redux';
 import CountryPage from './CountryPage';
-import {
-  setSearchIsDisabled
-} from '../../../redux/actionCreators/exampleActionCreator';
-import { fetchDetails, fetchDetailsWithoutState } from '../../../redux/actions/stateAction';
-import { fetchDeleteDetails } from '../../../redux/actionCreators/fetchData';
 
-const MapStateToProps = (state: any, { link }: any) => ({
+import { AppThunkDispatch, RootState } from '../../../redux/Store';
+import { Thunks } from '../../../redux/action-creators/thunks';
+import { AC } from '../../../redux/action-creators/action-creators';
+
+const MapState = ({
+  langReducer, countryPageReducer, countryReducer
+}: RootState, { link }:{ link:string }) => ({
   link,
-  // eslint-disable-next-line react/destructuring-assignment
-  lang: state.langReducer,
-  // eslint-disable-next-line react/destructuring-assignment
-  loading: state.countryPageReducer.loading,
-  // eslint-disable-next-line react/destructuring-assignment
-  countryDetails: state.countryPageReducer.data,
-  // eslint-disable-next-line react/destructuring-assignment
-  country: state.countryReducer.countries.length
-    // eslint-disable-next-line react/destructuring-assignment
-    ? state.countryReducer.countries.find(
-      (el: any) => el.nameEN === link
+  lang: langReducer.lang,
+  loading: countryPageReducer.loading,
+  countryDetails: countryPageReducer.data.details,
+  country: countryReducer.countries.length
+    ? countryReducer.countries.find(
+      (el) => el.nameEN === link
     ) : null
 });
 
-const MapDispatchToProps = (dispatch: any) => ({
-  fetchDeleteDetails: () => dispatch(fetchDeleteDetails()),
-  fetchDetails: (name: string) => dispatch(fetchDetails(name)),
-  setSearchIsDisabled: () => dispatch(setSearchIsDisabled(true)),
+const MapDispatch = (dispatch: AppThunkDispatch) => ({
+  fetchDeleteDetails: () => dispatch(AC.deleteDetails()),
+  fetchDetails: (name: string) => dispatch(Thunks.fetchDetails(name)),
+  setSearchIsDisabled: () => dispatch(AC.setSearchIsDisabled(true)),
   fetchDetailsWithoutState: (link: string) => dispatch(
-    fetchDetailsWithoutState(link)
+    Thunks.fetchDetailsWithoutState(link)
   )
 });
 
 const CountryListContainer = connect(
-  MapStateToProps,
-  MapDispatchToProps
+  MapState,
+  MapDispatch
 )(CountryPage);
 
 export default CountryListContainer;

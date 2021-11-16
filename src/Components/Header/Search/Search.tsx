@@ -2,7 +2,7 @@ import React from 'react';
 import { Input } from 'antd';
 import { CompassOutlined } from '@ant-design/icons';
 import { connect } from 'react-redux';
-import { setSearch } from '../../../redux/actionCreators/exampleActionCreator';
+import { AC } from '../../../redux/action-creators/action-creators';
 
 type SearchProps = {
 	text: string,
@@ -62,7 +62,7 @@ const MapState = ({
 );
 
 const MapDispatch = (dispatch: any) => ({
-  setInputText: (inputText: string) => dispatch(setSearch(inputText))
+  setInputText: (inputText: string) => dispatch(AC.setSearch(inputText))
 });
 
 const Search = connect(MapState, MapDispatch)(SearchUI);

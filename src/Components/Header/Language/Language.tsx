@@ -1,10 +1,9 @@
 import { Select } from 'antd';
 import { useMemo } from 'react';
 import { connect } from 'react-redux';
-import { setLanguage } from '../../../redux/actionCreators/exampleActionCreator';
+import { AC } from '../../../redux/action-creators/action-creators';
+import { AppThunkDispatch, RootState } from '../../../redux/Store';
 import css from './Language.module.css';
-
-const { Option } = Select;
 
 const langData = [
   {
@@ -23,15 +22,15 @@ const langData = [
 
 type LanguageProps = {
   lang: string;
-  setLang: (e: any) => void;
+  setLang: (e: string) => void;
 };
 
 const LanguageUI = ({ lang, setLang }: LanguageProps) => {
   const options = useMemo(
     () => langData.map(({ value, title }) => (
-      <Option key={value} className={css.optionBlock} value={value}>
+      <Select.Option key={value} className={css.optionBlock} value={value}>
         {title}
-      </Option>
+      </Select.Option>
     )),
     []
   );
@@ -42,7 +41,7 @@ const LanguageUI = ({ lang, setLang }: LanguageProps) => {
         defaultValue={lang}
         size="small"
         className={css.selectBlock}
-        onChange={(e: any) => {
+        onChange={(e: string) => {
           setLang(e);
         }}
       >
@@ -52,13 +51,13 @@ const LanguageUI = ({ lang, setLang }: LanguageProps) => {
   );
 };
 
-const MapState = ({ langReducer }: any) => ({
-  lang: langReducer
+const MapState = ({ langReducer }:RootState) => ({
+  lang: langReducer.lang
 });
 
-const MapDispatch = (dispatch: any) => ({
-  setLang: (e: any) => {
-    dispatch(setLanguage(e));
+const MapDispatch = (dispatch: AppThunkDispatch) => ({
+  setLang: (e: string) => {
+    dispatch(AC.setLanguage(e));
   }
 });
 

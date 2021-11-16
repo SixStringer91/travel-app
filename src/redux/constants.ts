@@ -1,0 +1,24 @@
+export enum ACTIONS {
+  ADD = 'ADD',
+  SET_LANGUAGE = 'SET_LANGUAGE',
+  SET_COUNTRIES = 'SET_COUNTRIES',
+  SET_COUNTRY = 'SET_COUNTRY',
+  SET_SEARCH = 'SET_SEARCH',
+  SET_SEARCH_IS_DISABLED = 'SET_SEARCH_IS_DISABLED',
+  FETCH_STATE_BEGIN = 'FETCH_STATE_BEGIN',
+  FETCH_STATE_SUCCESS = 'FETCH_STATE_SUCCESS',
+  FETCH_STATE_FAILURE = 'FETCH_STATE_FAILURE',
+  FETCH_DELETE_DETAILS = 'FETCH_DELETE_DETAILS',
+  FETCH_DETAILS_SUCCESS = 'FETCH_DETAILS_SUCCESS',
+  SET_USER = 'SET_USER',
+  LOGOUT = 'LOGOUT',
+}
+
+export enum URL {
+  BASE = 'https://damp-thicket-85004.herokuapp.com/',
+  COUNTRIES = 'api/get/countries',
+  COUNTRY_INFO = 'api/get/countryInfo',
+  REGISTR = '/users/register',
+  VALIDATE = '/users/validate',
+  LOGIN = '/users/login'
+}

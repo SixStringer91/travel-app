@@ -2,11 +2,7 @@ import { useState, useCallback } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Button } from 'antd';
 import ModalForm from './ModalForm/ModalForm';
-import {
-  registration,
-  login,
-  logout
-} from '../../../redux/actions/userActions';
+import { Thunks } from '../../../redux/action-creators/thunks';
 
 const Profile = () => {
   const isAuth = useSelector((state: any) => state.userReducer.isAuth);
@@ -29,26 +25,26 @@ const Profile = () => {
 
   const onSubmitLogin = useCallback(
     (values) => {
-      dispatch(login(values.username, values.password));
+      dispatch(Thunks.login(values.username, values.password));
       setIsVisible(false);
     },
-    [dispatch, login, setIsVisible]
+    [dispatch, setIsVisible]
   );
 
   const onSubmitRegistration = useCallback(
     (values) => {
-      registration(values.username, values.password);
+      Thunks.registration(values.username, values.password);
 
       setIsSignIn(true);
     },
-    [dispatch, registration, setIsSignIn]
+    [dispatch, setIsSignIn]
   );
 
   const onLogout = useCallback(() => {
     localStorage.removeItem('token');
 
-    dispatch(logout());
-  }, [dispatch, logout]);
+    // dispatch(AC.logout());
+  }, [dispatch]);
 
   return (
     <div>

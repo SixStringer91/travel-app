@@ -1,9 +1,8 @@
 import { connect } from 'react-redux';
 import CountriesList from './CountriesList';
-import {
-  setSearchIsDisabled
-} from '../../../redux/actionCreators/exampleActionCreator';
-import { fetchCountries } from '../../../redux/actions/stateAction';
+import { AppThunkDispatch, RootState } from '../../../redux/Store';
+import { Thunks } from '../../../redux/action-creators/thunks';
+import { AC } from '../../../redux/action-creators/action-creators';
 
 const countryFilter = (
   searchInputTxt: string,
@@ -55,10 +54,10 @@ const MapStateToProps = ({
     loading,
     error, countries
   }
-}:any) => {
+}:RootState) => {
   const countriesArray = countries.map((el:any) => ({
-    name: el[`name${langReducer.toUpperCase()}`],
-    capital: el.capital[langReducer],
+    name: el[`name${langReducer.lang.toUpperCase()}`],
+    capital: el.capital[langReducer.lang],
     photo: el.photo,
     nameEN: el.nameEN
   }));
@@ -70,9 +69,9 @@ const MapStateToProps = ({
   };
 };
 
-const MapDispatchToProps = (dispatch: any) => ({
-  getCountries: () => { dispatch(fetchCountries()); },
-  setSearchIsDisabled: () => dispatch(setSearchIsDisabled(false)),
+const MapDispatchToProps = (dispatch: AppThunkDispatch) => ({
+  getCountries: () => { dispatch(Thunks.fetchCountries()); },
+  setSearchIsDisabled: () => dispatch(AC.setSearchIsDisabled(false)),
   setExcretion: (name: string, inputText: string) => excretion(name, inputText)
 });
 
