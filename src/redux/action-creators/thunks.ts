@@ -4,7 +4,7 @@ import { AC } from './action-creators';
 import { ACTIONS, URL } from '../constants';
 
 const handleErrors = (response: Response) => {
-  console.log(response);
+  // console.log(response);
   if (!response.ok) {
     throw Error(response.statusText);
   }
@@ -59,7 +59,7 @@ export const Thunks = {
       dispatch(AC.setUser(response.data.user));
       localStorage.setItem('token', response.data.token);
     } catch (e) {
-      console.log(e);
+      // console.log(e);
     }
   },
 
@@ -75,15 +75,14 @@ export const Thunks = {
     }
   },
 
-  registration: (username: string, password: string) => async (dispatch: AppThunkDispatch) => {
-    console.log(dispatch);
+  registration: (username: string, password: string) => async () => {
     try {
       await axios.post(`${URL.BASE}${URL.REGISTR}`, {
         username,
         password
       });
     } catch (e) {
-      console.log(e);
+      // console.log(e);
     }
   }
 };

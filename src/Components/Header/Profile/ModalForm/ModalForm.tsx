@@ -49,8 +49,8 @@ const ModalForm: React.FC<ModalFormProps> = ({
           onSubmitRegistration(values);
         }
       })
-      .catch((info) => {
-        console.log('Validate Failed:', info);
+      .catch(() => {
+        // console.log('Validate Failed:', info);
       });
   }, [form, isSignIn, onSubmitLogin, onSubmitRegistration]);
 

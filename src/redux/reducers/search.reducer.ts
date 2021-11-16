@@ -18,7 +18,7 @@ const reducer = (state = initialState, action: ReturnedAction) => {
       break;
     default:
   }
-  return state;
+  return stateCopy;
 };
 
 export default reducer;
