@@ -1,6 +1,11 @@
 import { GeoJsonObject } from 'geojson';
 import { CSSProperties } from 'react';
 
+export interface IDateProps {
+	lang: string;
+	fontSize: string
+}
+
 interface GeoJsonObjectEx extends GeoJsonObject {
   type: string;
   properties: { ADMIN: string; ISO_A3: string };
@@ -12,7 +17,7 @@ interface ICoords {
   longitude: number;
 }
 
-interface IMapCoords {
+export interface IMapCoords {
   capital: ICoords;
   center: ICoords;
 }
@@ -32,7 +37,7 @@ export interface IViews {
 }
 
 export interface IDetails {
-  info: string;
+  info: {[key: string]: string};
   views: IViews[];
   videoURL: string;
   mapCoords: IMapCoords;
@@ -65,4 +70,39 @@ export interface IMapProps {
 
 export interface ICurrenciesProps {
   currency: string;
+}
+
+export interface IWeatherAttributes{
+	id: string;
+	description: string;
+}
+
+export interface IWeatherMain {
+	temp:number
+}
+
+export interface IWeatherStore extends IWeatherAttributes, IWeatherMain {}
+
+export type WeatherApiResponse = {
+		base: string;
+    weather:IWeatherAttributes[];
+    main: IWeatherMain;
+    cod: number;
+    coord: {lon: number, lat: number}
+    dt: number;
+    id: number;
+    name: string;
+    sys: {
+      country: string;
+      id: number;
+      sunrise: number;
+      sunset:number;
+      type:number;
+    }
+		timezone: number;
+		visibility: number;
+		wind: {
+			speed: number;
+			deg: number;
+		}
 }

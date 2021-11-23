@@ -8,7 +8,7 @@ const initialState = {
   data: {
     currencyCode: '',
     details: {
-      info: '',
+      info: {},
       views: [
         {
           imgURL: '',

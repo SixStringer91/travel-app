@@ -1,21 +1,14 @@
 import axios from 'axios';
 import { AppThunkDispatch } from '../Store';
 import { AC } from './action-creators';
-import { ACTIONS, URL } from '../constants';
+import { URL } from '../constants';
+import { WeatherApiResponse } from '../../Interfaces';
 
 const handleErrors = (response: Response) => {
-  // console.log(response);
   if (!response.ok) {
     throw Error(response.statusText);
   }
   return response;
-};
-
-export const logout = () => {
-  localStorage.removeItem('token');
-  return {
-    type: ACTIONS.LOGOUT
-  };
 };
 
 export const Thunks = {
@@ -84,5 +77,18 @@ export const Thunks = {
     } catch (e) {
       // console.log(e);
     }
+  },
+
+  getWeather: (lang: string, capital: string) => async (dispatch: AppThunkDispatch) => {
+    const url = `https://api.openweathermap.org/data/2.5/weather?q=${capital}&lang=${
+      lang === 'be' ? 'ua' : lang
+    }&appid=dd191359a921b4e3412b6d7b1fb83f95&units=metric`;
+    const res = await fetch(url);
+    const data:WeatherApiResponse = await res.json();
+    dispatch(AC.setWeather({
+      id: `owf-${data.weather[0].id}`,
+      description: data.weather[0].description,
+      temp: data.main.temp
+    }));
   }
 };

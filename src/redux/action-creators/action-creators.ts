@@ -1,4 +1,4 @@
-import { ICountry } from '../../Interfaces';
+import { ICountry, IWeatherStore } from '../../Interfaces';
 import { ACTIONS } from '../constants';
 
 export const AC = {
@@ -61,6 +61,11 @@ export const AC = {
 
   logout: () => ({
     type: ACTIONS.LOGOUT
+  }) as const,
+
+  setWeather: (payload: IWeatherStore | null) => ({
+    type: ACTIONS.SET_WEATHER_PARAMS,
+    payload
   }) as const
 };
 

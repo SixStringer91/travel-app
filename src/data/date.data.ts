@@ -83,3 +83,20 @@ export const monthsObj = {
     'Снежня'
   ]
 };
+
+export const dateGeneral = {
+	ru: {
+		days: daysObj.RU,
+		month: monthsObj.RU
+	},
+	en: {
+		days: daysObj.ENG,
+		month: monthsObj.ENG
+	},
+	be: {
+		days: daysObj.BY,
+		month: monthsObj.BY
+	}
+
+}
+

@@ -1,0 +1,23 @@
+.slick-prev:before,
+.slick-next:before {
+  color: #ffd166 !important;
+}
+
+.next-slick-arrow,
+.prev-slick-arrow {
+  color: #000000;
+  font-size: 48px;
+}
+.thumbnail-slider-wrap {
+  margin-top: 15px;
+  min-height: 160px;
+}
+.thumbnail-slider-wrap .slick-track .slick-slide {
+  text-align: center;
+}
+.thumbnail-slider-wrap .slick-track .slick-slide img {
+  width: 70%;
+}
+.slick-dots{
+  position:static !important;
+}

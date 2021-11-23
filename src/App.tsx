@@ -1,16 +1,16 @@
 import { Layout } from 'antd';
 import './App.css';
-import MainPage from './Components/MainPage/MainPage';
-import HeaderInner from './Components/Header/Header';
-import FooterInner from './Components/Footer/Footer';
+import FooterInner from './Components/page/Footer/Footer';
 import 'antd/dist/antd.css';
+import MainPage from './Components/page/MainPage/MainPage';
+import Header from './Components/page/Header/Header';
 
 const { Content } = Layout;
 
 const App = () => (
   <>
     <Layout style={{ minHeight: '100vh' }}>
-      <HeaderInner />
+      <Header />
       <Content>
         <MainPage />
       </Content>
