@@ -12,8 +12,8 @@ const initialState = {
       views: [
         {
           imgURL: '',
-          viewName: '',
-          about: ''
+          viewName: {},
+          about: {}
         }
       ],
       videoURL: '',

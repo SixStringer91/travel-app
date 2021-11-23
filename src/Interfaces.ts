@@ -32,8 +32,8 @@ export type LangType = 'ru' | 'en' | 'be';
 
 export interface IViews {
   imgURL: string;
-  viewName: string;
-  about: string;
+  viewName: {[key:string]:string};
+  about: {[key:string]:string};
 }
 
 export interface IDetails {

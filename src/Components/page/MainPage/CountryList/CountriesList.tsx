@@ -3,7 +3,7 @@ import { NavLink } from 'react-router-dom';
 import {
   Card, Col, Row, Image
 } from 'antd';
-import Preloader from '../../../shared/preloader.component';
+import Preloader from '../../../shared/preloader';
 
 const { Meta } = Card;
 

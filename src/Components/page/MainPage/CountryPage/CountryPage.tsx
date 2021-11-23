@@ -6,7 +6,7 @@ import Weather from './Weather/weather.component';
 import Gallery from './Gallery/Gallery';
 import Video from './Video/video.component';
 import DateAndTime from './Date/DateAndTime';
-import Preloader from '../../../shared/preloader.component';
+import Preloader from '../../../shared/preloader';
 import { ICountry, IDetails, LangType } from '../../../../Interfaces';
 import WorldMap from './world-map/world-map.component';
 

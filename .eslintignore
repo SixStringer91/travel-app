@@ -3,7 +3,7 @@ public/*
 src/react-app-env.d.ts
 src/serviceWorker.ts
 *.data.ts
-leaflet-map.component.tsx
+leaflet-map.tsx
 Panda.tsx
 en.ts
 ru.ts

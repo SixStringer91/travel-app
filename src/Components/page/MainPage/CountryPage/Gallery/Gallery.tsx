@@ -1,32 +1,45 @@
-import { useEffect, useState } from 'react';
-import Slider from 'react-slick';
+import React from 'react';
+import Slider, { Settings } from 'react-slick';
 import styles from './Gallery.module.css';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
-// import './slider.css';
+import './slider.css';
+import { SliderImage } from '../../../../shared';
+import { BigSliderElement, SmallSliderElement } from '../../../../hoc';
+import { IViews, LangType } from '../../../../../Interfaces';
 
-const Gallery = (props: any) => {
-  const [nav1, setNav1] = useState<any>(null);
-  const [nav2, setNav2] = useState<any>(null);
-  const [slider1, setSlider1] = useState<any>(null);
-  const [slider2, setSlider2] = useState<any>(null);
+type GalleryProps = {
+	views: IViews[];
+	lang: LangType;
+}
 
-  useEffect(() => {
-    setNav1(slider1);
-  }, [slider1]);
+type GalleryState = {
+	bigSlider: Slider | null;
+	smallSlider: Slider | null
+}
 
-  useEffect(() => {
-    setNav2(slider2);
-  }, [slider2]);
+const Gallery = ({ views, lang }: GalleryProps) => {
+  const bigSliderRef = React.useRef<Slider | null>(null);
+  const smallSliderRef = React.useRef<Slider | null>(null);
+  const [state, setState] = React.useState<GalleryState>({
+    bigSlider: null,
+    smallSlider: null
+  });
 
-  const settingsMain = {
+  React.useEffect(() => {
+    setState({
+      bigSlider: bigSliderRef.current,
+      smallSlider: smallSliderRef.current
+    });
+  }, []);
+
+  const settingsMain:Settings = {
     slidesToShow: 1,
     slidesToScroll: 1,
     arrows: true,
-    arrowsClass: styles.arrowsClass,
     fade: true,
     swipeToSlide: true,
-    asNavFor: nav1,
+    asNavFor: state.smallSlider || undefined,
     speed: 600,
     responsive: [
       {
@@ -51,55 +64,44 @@ const Gallery = (props: any) => {
 
   };
 
-  const settingsThumbs = {
+  const settingsThumbs:Settings = {
     className: styles.innerSlider,
-    slidesToShow: 2,
-    slidesToScroll: 1,
-    asNavFor: nav2,
+    slidesToShow: 3,
+    slidesToScroll: 3,
+    asNavFor: state.bigSlider || undefined,
     arrows: false,
     dots: true,
-    dotsClass: `${styles.slickDots} slick-dots`,
+    dotsClass: `slick-dots ${styles.slickDots}`,
     centerMode: true,
     swipeToSlide: true,
     focusOnSelect: true,
     centerPadding: '10px'
-
   };
-  const { views, lang } = props;
+
+  const bigSliderElements = React.useMemo(() => views.map((el) => {
+    const Component = BigSliderElement(SliderImage, el.viewName[lang], el.about[lang]);
+    return <Component name={el.viewName[lang]} url={el.imgURL} isBig />;
+  }), [lang]);
+
+  const smallSliderElements = React.useMemo(() => views.map((el) => {
+    const Component = SmallSliderElement(SliderImage);
+    return <Component name={el.viewName[lang]} url={el.imgURL} isBig={false} />;
+  }), [lang]);
+
   return (
     <div className={styles.sliderWrapper}>
       <Slider
         {...settingsMain}
-        asNavFor={nav2}
-        ref={(slider: any) => setSlider1(slider)}
+        ref={bigSliderRef}
       >
-        {views.map((v: any) => (
-          <div className={styles.slickSlide} key={v.viewName[lang]}>
-            <h2 className={styles.slickSlideTitle}>{v.viewName[lang]}</h2>
-            <img
-              className={`${styles.slickSlideImage} ${styles.bigImage}`}
-              src={`${v.imgURL}`}
-              alt={`${v.viewName[lang]}`}
-            />
-            <div className={styles.slickSlideLabel}><span>{v.about[lang]}</span></div>
-          </div>
-        ))}
+        {bigSliderElements}
       </Slider>
       <div className={styles.thumbnailSliderWrap}>
         <Slider
           {...settingsThumbs}
-          asNavFor={nav1}
-          ref={(slider: any) => setSlider2(slider)}
+          ref={smallSliderRef}
         >
-          {views.map((v: any) => (
-            <div className={styles.slickSlide} key={v.viewName[lang]}>
-              <img
-                className={styles.slickSlideImage}
-                src={`${v.imgURL}`}
-                alt={`${v.viewName[lang]}`}
-              />
-            </div>
-          ))}
+          {smallSliderElements}
         </Slider>
       </div>
     </div>

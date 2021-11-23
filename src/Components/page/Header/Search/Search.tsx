@@ -18,7 +18,7 @@ const placeholderText = {
   be: 'набірайце, cпадарства'
 };
 
-const SearchUI = ({
+const Search = ({
   text, disabled, setInputText, placeholder
 }: SearchProps) => {
   const searchRef = React.useRef<Input>(null);
@@ -67,6 +67,4 @@ const MapDispatch = (dispatch: AppThunkDispatch) => ({
   }
 });
 
-const Search = connect(MapState, MapDispatch)(SearchUI);
-
-export default Search;
+export default connect(MapState, MapDispatch)(Search);

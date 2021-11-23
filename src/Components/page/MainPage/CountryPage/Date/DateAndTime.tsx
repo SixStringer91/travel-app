@@ -2,10 +2,10 @@ import { Space } from 'antd';
 import {
   useCallback, useEffect, useMemo, useState
 } from 'react';
-import Clock from '../../../../shared/time.component';
-import Date from '../../../../shared/date.component';
+import Clock from '../../../../shared/time';
+import Date from '../../../../shared/date';
 import { regions } from '../../../../../data/date.data';
-import DateElement from '../../../../hoc/date-element.hoc';
+import DateElement from '../../../../hoc/date-element/date-element.hoc';
 import { LangType } from '../../../../../Interfaces';
 
 interface IDateProps {
